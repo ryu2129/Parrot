@@ -1,0 +1,18 @@
+<%= form_for(@post) do |f| %>
+  <%= f.label :アーティスト名 %>
+  <%= f.collection_select :artist_id, Artist.all, :id, :name, include_blank: "選択してください"  %>
+  <%= f.label :ライブ名 %>
+  <%= f.text_field :title %>
+  <%= f.label :イベント詳細 %>
+  <%= f.text_area :introduction %>
+  <%= f.label :日程 %>
+  <%= f.datetime_field :schedule, ignore_data:true %>
+  <%= f.label :視聴方法 %>
+  <%= f.radio_button :watching_method, "ライブ" %>ライブ
+  <%= f.radio_button :watching_method, "ストリーミング", checked: true %>ストリーミング
+  <%= f.label :詳細URL %>
+  <%= f.text_field :detailed_url %>
+  <%= f.label :料金 %>
+  <%= f.text_field :admission %>
+  <%= f.submit :"Go" %>
+<% end %>
