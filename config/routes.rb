@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root to: "posts#index"
+  devise_for :members, controllers: {
+    registrations: 'members/registrations',
+    passwords: 'members/passwords'
+  }
+  devise_scope :member do
+    post '/members/guest_sign_in', to: 'members/sessions#new_guest'
+  end
+
+  get 'abouts/about'
+  resources :posts
+  resources :artists, only: [:index, :show]
 end
