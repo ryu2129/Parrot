@@ -75,3 +75,8 @@ gem 'cancancan'
 
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
