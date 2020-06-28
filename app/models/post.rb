@@ -7,4 +7,5 @@ class Post < ApplicationRecord
   validates :schedule, presence: true
   validates :detailed_url, presence: true
   validates :admission, presence: true
+  mount_uploader :image, PostUploader
 end
