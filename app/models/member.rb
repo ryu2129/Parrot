@@ -4,6 +4,7 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
+  mount_uploader :image, MemberUploader
 
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |member|

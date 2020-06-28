@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    
   end
 
   def create
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:artist_id, :title, :introduction, :schedule, :watching_method, :detailed_url, :admission)
+    params.require(:post).permit(:artist_id, :title, :image, :introduction, :schedule, :watching_method, :detailed_url, :admission)
   end
 
 end

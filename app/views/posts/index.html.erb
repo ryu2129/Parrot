@@ -5,6 +5,8 @@
 
   <%= post.title %>
 
+  <%= image_tag post.image.url %>
+
   <%= post.introduction %>
 
   <%= post.schedule %>
@@ -14,5 +16,9 @@
   <%= post.detailed_url %>
 
   <%= post.admission %>
+
+  <%= link_to post_path(post) do %>
+    andmore<br>
+  <% end %>
 
 <% end %>
