@@ -1,22 +1,62 @@
-<%= form_for(@post) do |f| %>
-  <%= f.label :アーティスト名 %>
-  <%= f.collection_select :artist_id, Artist.all, :id, :name, include_blank: "選択してください"  %>
-  <%= f.label :ライブ名 %>
-  <%= f.text_field :title %>
+<div class="container">
+  <div class="row">
+  <div class="col-9">
+    <%= form_for(@post) do |f| %>
+    <table class="table">
+      <tr>
+        <td class="align-middle"><%= f.label :アーティスト名 %></td>
+        <td><%= f.collection_select :artist_id, Artist.all, :id, :name, include_blank: "選択してください"  %></td>
+      </tr>
 
-  <%= f.label :フライヤー %>
-    <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+      <tr>
+        <td class="align-middle "><%= f.label :ライブ名 %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
 
-  <%= f.label :イベント詳細 %>
-  <%= f.text_area :introduction %>
-  <%= f.label :日程 %>
-  <%= f.datetime_field :schedule, ignore_data:true %>
-  <%= f.label :視聴方法 %>
-  <%= f.radio_button :watching_method, "ライブ" %>ライブ
-  <%= f.radio_button :watching_method, "ストリーミング", checked: true %>ストリーミング
-  <%= f.label :詳細URL %>
-  <%= f.text_field :detailed_url %>
-  <%= f.label :料金 %>
-  <%= f.text_field :admission %>
-  <%= f.submit :"Go" %>
-<% end %>
+      <tr>
+        <td class="align-middle"><%= f.label :フライヤー %></td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary rounded-pill">
+            <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="align-middle"><%= f.label :イベント詳細 %></td>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+
+      <tr>
+        <td class="align-middle"><%= f.label :日程 %></td>
+        <td><%= f.datetime_field :schedule, ignore_data:true %></td>
+      </tr>
+
+      <tr>
+        <td class="align-middle"><%= f.label :視聴方法 %></td>
+        <td>
+          <%= f.radio_button :watching_method, 0, checked: true %>
+          <%= f.label :ストリーミング %><br>
+          <%= f.radio_button :watching_method, 1, checked: false %>
+          <%= f.label :ライブ %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="align-middle"><%= f.label :詳細URL %>
+        <td><%= f.text_field :detailed_url %></td>
+      </tr>
+
+      <tr>
+        <td class="align-middle"><%= f.label :料金 %></td>
+        <td><%= f.text_field :admission %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.submit :"Go", class: "btn btn-primary btn-block" %></td>
+      </tr>
+    </table>
+    <% end %>
+    </div>
+  </div>
+</div>

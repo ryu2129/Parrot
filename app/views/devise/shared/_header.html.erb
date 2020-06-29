@@ -1,33 +1,36 @@
-<header>
-  <nav class="navbar navbar-expand navbar-light">
-    <%= link_to "Parrot", root_path, class: 'navbar-brand' %>
-    <div id="Navber">
-      <ul class="navbar-nav">
+<header class="border-bottom mb-5", style="background-color: #6AC1B7;">
+  <nav class="navbar navbar-expand-lg">
+    <ul class="nav navbar-nav mr-auto">
+      <li class="nav-item m-4"></li>
+        <%= link_to "Parrot", root_path, class: 'navbar-brand text-white' %>
+      </li>
+    </ul>
+
+      <ul class="nav navbar-nav navbar-right">
         <% if member_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to 'Home', root_path, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to 'Home', root_path, class: 'nav-link text-white' %>
           </li>
-          <li class="nav-item active">
-            <%= link_to 'アカウント編集', edit_member_registration_path, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to 'アカウント編集', edit_member_registration_path, class: 'nav-link text-white' %>
           </li>
-          <li class="nav-item active">
-            <%= link_to '新規投稿', new_post_path, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '新規投稿', new_post_path, class: 'nav-link text-white' %>
           </li>
-          <li class="nav-item active">
-            <%= link_to 'アーティスト一覧', artists_path, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to 'アーティスト一覧', artists_path, class: 'nav-link text-white' %>
           </li>
-          <li class="nav-item active">
-            <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link text-white' %>
           </li>
       <% else %>
-          <li class="nav-item active">
-            <%= link_to "新規登録", new_member_registration_path, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to "新規登録", new_member_registration_path, class: 'nav-link text-white' %>
           </li>
-          <li class="nav-item active">
-            <%= link_to "ログイン", new_member_session_path, class: 'nav-link' %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-white' %>
           </li>
         <% end %>
       </ul>
-    </div>
   </nav>
 </header>

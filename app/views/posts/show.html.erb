@@ -1,15 +1,43 @@
-  <%= @post.artist_id %>
+<div class="container">
+  <div class="row">
+    <div class="card-deck col-12 mb-4">
+      <div class="card">
+        <img class="card-img-top">
+          <%= image_tag @post.image.url %>
+        <div class="card-body">
+          <h2 class="card-title">
+            <%= @post.artist.name %>
+          </h2>
 
-  <%= @post.title %>
+          <h3 class="card-subtitle mb-2 text-muted">
+            <%= @post.title %>
+          </h3>
 
-  <%= image_tag @post.image.url %>
+          <p class="card-text">
+            <%= @post.introduction %>
+          </p>
 
-  <%= @post.introduction %>
+          <p><strong><u>開催日時</u></strong></p>
+          <%= @post.schedule %>
+          <p></p>
 
-  <%= @post.schedule %>
+          <p><strong><u>視聴方法</u></strong></p>
+            <% if @post.watching_method == 0 %>
+              ストリーミング
+            <% elsif @post.watching_method == 1 %>
+              ライブ
+            <% end %>
+          <p></p>
 
-  <%= @post.watching_method %>
+          <p><strong><u>詳細URL</u></strong></p>
+            <%= @post.detailed_url %>
 
-  <%= @post.detailed_url %>
+          <p><strong><u>料金</u></strong></p>
+            <%= @post.admission %>
+          <p></p>
 
-  <%= @post.admission %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

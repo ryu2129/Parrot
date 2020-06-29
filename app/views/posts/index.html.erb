@@ -1,24 +1,46 @@
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="card-deck col-6 mb-4">
+      <div class="card">
+        <img class="card-img-top">
+        <%= image_tag post.image.url %>
+        <div class="card-body">
+          <h2 class="card-title">
+            <%= post.artist.name %>
+          </h2>
 
-<% @posts.each do |post| %>
+          <h3 class="card-subtitle mb-2 text-muted">
+            <%= post.title %>
+          </h3>
 
-  <%= post.artist_id %>
+          <%= post.schedule %>
+          <p></p>
 
-  <%= post.title %>
+            <% if post.watching_method == 0 %>
+              ストリーミング
+            <% elsif post.watching_method == 1 %>
+              ライブ
+            <% end %>
+            <p></p>
 
-  <%= image_tag post.image.url %>
+            <%= post.admission %>
+          <p></p>
 
-  <%= post.introduction %>
+          <%= link_to post_path(post) do %>
+            <p class="btn btn-primary">
+              詳細はこちら
+            </p>
+          <% end %>
 
-  <%= post.schedule %>
+          <div class="" >
+            <%= image_tag post.member.image.url, class:"member-icon" %>
+          </div>
+            <%= post.member.name %>
 
-  <%= post.watching_method %>
-
-  <%= post.detailed_url %>
-
-  <%= post.admission %>
-
-  <%= link_to post_path(post) do %>
-    andmore<br>
-  <% end %>
-
-<% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
