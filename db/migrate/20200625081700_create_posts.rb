@@ -1,8 +1,8 @@
 class CreatePosts < ActiveRecord::Migration[5.2]
   def change
     create_table :posts do |t|
-      t.references :member, foreign_key: true
-      t.references :artist, foreign_key: true
+      t.references :member, type: :bigint, foreign_key: true
+      t.references :artist, type: :bigint, foreign_key: true
       t.string :title
       t.text :introduction
       t.string :image

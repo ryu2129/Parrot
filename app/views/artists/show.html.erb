@@ -1,3 +1,9 @@
-    <%= @artist.name %>
-    <%= image_tag @artist.image.url %>
-    <%= @artist.profile %>
+<div class="container">
+    <div class="row">
+        <div class="h4">
+            <%= @artist.name %>
+        </div>
+        <%= image_tag @artist.image.url, class:"img-show" %>
+        <%= @artist.profile %>
+    </div>
+</div>

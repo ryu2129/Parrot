@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   get 'abouts/about'
+  resources :members
   resources :posts
   resources :artists, only: [:index, :show]
 end

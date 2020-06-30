@@ -5,6 +5,8 @@ class Member < ApplicationRecord
         :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   mount_uploader :image, MemberUploader
+  validates :profile, length: { maximum: 200 }
+
 
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |member|
