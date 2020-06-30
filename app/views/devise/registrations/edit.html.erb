@@ -6,15 +6,9 @@
       <%= bootstrap_devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :アイコン %>
-        <% if @member.image? %>
-          <%= image_tag @member.image.thumb.url %>
-        <% else %>
-          <%= image_tag "/assets/no-image.jpg" %>
-        <% end %>
-        <button type="button" class="btn btn-outline-secondary rounded-pill">
-          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
-        </button>
+        <img id="img_prev" class='hidden' />
+        <%= image_tag current_member.image.to_s, class: 'present_img' %>
+        <%= f.file_field :image, id: 'post_img' %>
       </div>
 
       <div class="form-group">
@@ -30,12 +24,6 @@
       <div class="form-group">
         <%= f.label :メールアドレス %>
         <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-      </div>
-
-      <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
-      <div class="form-group">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
       </div>
 
       <div class="form-group">
