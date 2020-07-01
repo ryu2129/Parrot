@@ -4,12 +4,27 @@ class MemberUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   include CarrierWave::MiniMagick
-  process resize_to_fit: [800, 800]
+  process :resize_to_limit => [700, 700]
 
+  # サムネイル画像
   version :thumb do
-    process resize_to_fill: [200,200]
+    process resize_to_fill: [100, 100]
   end
 
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+
+  def filename
+    "something.jpg" if original_filename
+  end
+
+  protected
+  # 一意となるトークンを作成
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

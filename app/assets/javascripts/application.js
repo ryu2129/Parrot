@@ -17,3 +17,32 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$( document ).on('turbolinks:load', function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#post_img").change(function(){
+    $('#img_prev').removeClass('hidden');
+    $('.present_img').remove();
+    readURL(this);
+  });
+});
+
+$(function() {
+  $(document).on("ajax:success", ".fav", function(e) {
+    if ($('#' + e.detail[0]).hasClass('fa-heart')) {
+      $('#' + e.detail[0]).removeClass('fa-heart').addClass('fa-heart-o');
+    } else {
+  $('#' + e.detail[0]).removeClass('fa-heart-o').addClass('fa-heart');
+    }
+  })
+})

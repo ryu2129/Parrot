@@ -33,6 +33,17 @@
             </p>
           <% end %>
 
+          <% if post.favorited_by?(current_member) %>
+            <%= link_to fav_posts_path(post), class:"fav", remote: true do %>
+              <i class="fa fa-heart" id="<%= post.id %>"></i>
+            <% end %>
+          <% else %>
+            <%= link_to fav_posts_path(post), class: "fav", remote: true do %>
+              <i class="fa fa-heart-o" id="<%= post.id %>"></i>
+            <% end %>
+          <% end %>
+
+
           <div class="" >
             <%= image_tag post.member.image.url, class:"member-icon" %>
           </div>

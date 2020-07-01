@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-  <div class="col-9">
+  <div class="col-12">
     <%= form_for(@post) do |f| %>
     <table class="table">
       <tr>
@@ -16,9 +16,8 @@
       <tr>
         <td class="align-middle"><%= f.label :フライヤー %></td>
         <td>
-          <button type="button" class="btn btn-outline-secondary rounded-pill">
-            <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
-          </button>
+          <img id="img_prev" class='hidden' />
+          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id: 'post_img' %>
         </td>
       </tr>
 
