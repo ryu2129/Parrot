@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_061554) do
+ActiveRecord::Schema.define(version: 2020_06_30_111105) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 2020_06_26_061554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_artists_on_name"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content", null: false
+    t.integer "member_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|
