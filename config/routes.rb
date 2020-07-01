@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :members, controllers: {
     registrations: 'members/registrations',
-    passwords: 'members/passwords'
+    passwords: 'members/passwords',
+    omniauth_callbacks: 'members/omniauth_callbacks'
   }
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
   devise_scope :member do
     post '/members/guest_sign_in', to: 'members/sessions#new_guest'
