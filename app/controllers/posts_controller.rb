@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
+  require 'date'
   before_action :authenticate_member!
 
   def index
-    @posts = Post.all
+    @posts = Post.where("schedule > ?", DateTime.now)
   end
 
   def new

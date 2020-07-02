@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :members, controllers: {
     registrations: 'members/registrations',
-    passwords: 'members/passwords'
+    passwords: 'members/passwords',
+    omniauth_callbacks: 'members/omniauth_callbacks'
   }
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
   devise_scope :member do
     post '/members/guest_sign_in', to: 'members/sessions#new_guest'
@@ -14,9 +18,15 @@ Rails.application.routes.draw do
   get 'abouts/about'
   get 'posts/fav/:id' => 'posts#fav', as: "fav_posts"
   resources :members
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
-  resources :artists, only: [:index, :show]
+
+  resources :artists, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
 
 end

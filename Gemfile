@@ -78,6 +78,8 @@ gem 'mini_magick'
 
 gem 'pry-rails'
 
+gem 'omniauth-twitter'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
