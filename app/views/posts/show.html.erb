@@ -30,7 +30,7 @@
           <p></p>
 
           <p><strong><u>詳細URL</u></strong></p>
-            <%= @post.detailed_url %>
+            <%= text_url_to_link(h(@post.detailed_url)).html_safe %>
 
           <p><strong><u>料金</u></strong></p>
             <%= @post.admission %>
