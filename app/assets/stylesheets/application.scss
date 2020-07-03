@@ -14,6 +14,28 @@
 
   @import "bootstrap";
 
+body {
+  background-color: #DFEFED;
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #517D99;
+  border-color: #517D99;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #517D99;
+  border-color: #517D99;
+}
+
+.btn-warning:hover {
+  color: #fff;
+  background-color: #517D99;
+  border-color: #517D99;
+}
+
+
 .container-login {
   @extend .container-fluid;
   max-width: 576px;

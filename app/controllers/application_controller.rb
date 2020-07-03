@@ -1,11 +1,34 @@
 class ApplicationController < ActionController::Base
 
+  def authenticate_member
+    if current_member == nil
+      flash[:notice] = "ログインが必要です"
+      redirect_to("/login")
+    end
+  end
+
+  def forbid_login_member
+    if current_member
+      flash[:notice] = "すでにログインしています"
+      redirect_to("/posts")
+    end
+  end
+
   protect_from_forgery with: :exception
 
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
+
+  def after_sign_in_path_for(resource)
+    posts_path
+  end
+  #ログアウト後のリダイレクト先
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   def configure_permitted_parameters
     # サインアップ時にストロングパラメータを追加
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image, :profile])

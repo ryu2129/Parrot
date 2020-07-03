@@ -27,6 +27,12 @@
           </li>
       <% else %>
           <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', new_post_path, class: 'nav-link fas fa-edit fa-3x h-icon faa-float animated-hover' %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', artists_path, class: 'nav-link fas fa-user-friends fa-3x h-icon faa-float animated-hover' %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
             <%= link_to "新規登録", new_member_registration_path, class: 'nav-link text-white' %>
           </li>
           <li class="nav-item active m-4 navbar-right">

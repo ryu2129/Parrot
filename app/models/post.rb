@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :artist
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  validates :member_id,  presence: true
   validates :artist_id, presence: true
   validates :title, presence: true
   validates :introduction, presence: true

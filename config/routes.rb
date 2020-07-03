@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get 'abouts/about'
   get 'posts/fav/:id' => 'posts#fav', as: "fav_posts"
-  resources :members
+  resources :members, only: [:show, :create, :update]
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
