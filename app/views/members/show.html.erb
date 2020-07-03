@@ -17,8 +17,12 @@
           <%= @member.profile %>
         </p>
 
-      <hr class="devise-link my-5">
-        <%= link_to "編集", edit_member_registration_path, class: 'btn btn-info btn-block mb-4' %>
+        <hr class="devise-link my-5">
+        <% if current_member == @member %>
+          <%= link_to "編集", edit_member_registration_path, class: 'btn btn-info btn-block mb-4' %>
+        <% else %>
+          <%= link_to "トップページに戻る", root_path, class:'btn btn-info btn-block mb-4' %>
+        <% end %>
     </div>
     </div>
   </div>

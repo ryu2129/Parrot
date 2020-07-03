@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   require 'date'
-  before_action :authenticate_member!
+  #before_action :authenticate_member!, only: [:create, :edit, :update, :destroy, :fav]
 
   def index
     @posts = Post.where("schedule > ?", DateTime.now)
