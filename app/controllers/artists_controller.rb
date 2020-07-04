@@ -1,11 +1,12 @@
 class ArtistsController < ApplicationController
 
   def index
-    @artists = Artist.all
+    @artists = Artist.order("name")
   end
 
   def show
     @artist = Artist.find(params[:id])
+    @posts = @artist.posts.where("schedule > ?", DateTime.now)
   end
 
   def search

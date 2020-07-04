@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   validates :member_id,  presence: true
   validates :artist_id, presence: true
   validates :title, presence: true
+  validates :image, presence: true
+  validates :address, presence: true
   validates :introduction, presence: true
   validates :schedule, presence: true
   validates :detailed_url, presence: true

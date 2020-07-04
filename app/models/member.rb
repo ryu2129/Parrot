@@ -6,6 +6,7 @@ class Member < ApplicationRecord
         :omniauthable, omniauth_providers: %i[twitter]
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
   mount_uploader :image, MemberUploader
   validates :profile, length: { maximum: 200 }
