@@ -1,4 +1,12 @@
-<%= form_with(model: [post, comment], url: post_comments_path(@post) ) do |f| %>
-    <%= f.text_area :content, class: "input-mysize", :placeholder => "コメントを投稿する" %>
-    <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-12 align-items-center text-center mt-2">
+            <div class="text-center">
+            <%= form_with(model: [post, comment], url: post_comments_path(@post) ) do |f| %>
+                <div class="form-group"><%= f.text_area :content, class: "form-control ", :placeholder => "コメントを投稿する" %></div>
+                <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,19 @@
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                count: @post.errors.count,
+                resource: @post.class.model_name.human.downcase)
+      %>
+    </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
   <div class="col-12">
@@ -27,6 +43,11 @@
       </tr>
 
       <tr>
+        <td class="align-middle"><%= f.label :場所 %></td>
+        <td><%= f.text_field :address %></td>
+      </tr>
+
+      <tr>
         <td class="align-middle"><%= f.label :日程 %></td>
         <td><%= f.datetime_field :schedule, ignore_data:true %></td>
       </tr>
@@ -52,7 +73,7 @@
       </tr>
 
       <tr>
-        <td><%= f.submit :"Go", class: "btn btn-primary btn-block" %></td>
+        <td><%= f.submit :"Go", data: { confirm: "虚偽の投稿ではないですか？\n虚偽投稿の場合、アカウント停止をさせていただく可能性があります。" }, class: "btn btn-primary btn-block" %></td>
       </tr>
     </table>
     <% end %>

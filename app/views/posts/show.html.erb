@@ -18,7 +18,8 @@
           </p>
 
           <p><strong><u>開催日時</u></strong></p>
-          <%= @post.schedule %>
+          <%= @post.schedule.year %>/<%= @post.schedule.mon %>/<%= @post.schedule.day %><br>
+            Start:<%= @post.schedule.hour %>:<%= @post.schedule.min %>
           <p></p>
 
           <p><strong><u>視聴方法</u></strong></p>

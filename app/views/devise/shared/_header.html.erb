@@ -6,7 +6,7 @@
       </li>
     </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right pc-nav">
         <% if member_signed_in? %>
           <!-- <li class="nav-item active m-4 navbar-right">
             <%= link_to '', root_path, class: 'nav-link fas fa-home fa-3x h-icon faa-float animated-hover' %>
@@ -33,12 +33,47 @@
             <%= link_to '', artists_path, class: 'nav-link fas fa-user-friends fa-3x h-icon faa-float animated-hover' %>
           </li>
           <li class="nav-item active m-4 navbar-right">
-            <%= link_to "新規登録", new_member_registration_path, class: 'nav-link text-white' %>
+            <%= link_to "", new_member_registration_path, class: 'nav-link fas fa-user-plus fa-3x h-icon faa-float animated-hover' %>
           </li>
           <li class="nav-item active m-4 navbar-right">
-            <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-white' %>
+            <%= link_to "", new_member_session_path, class: 'nav-link fas fa-sign-in-alt fa-3x h-icon faa-float animated-hover' %>
+          </li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right sp-nav">
+        <% if member_signed_in? %>
+          <!-- <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', root_path, class: 'nav-link fas fa-home fa-3x h-icon faa-float animated-hover' %>
+          </li> -->
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', new_post_path, class: 'nav-link fas fa-edit fa-3x h-icon faa-float animated-hover' %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', artists_path, class: 'nav-link fas fa-user-friends fa-3x h-icon faa-float animated-hover' %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to member_path(current_member.id) do %>
+              <%= image_tag current_member.image.url, class:"member-icon faa-float animated-hover" %>
+            <% end %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', destroy_member_session_path, method: :delete, class: 'nav-link fas fa-sign-out-alt fa-3x h-icon faa-float animated-hover' %>
+          </li>
+      <% else %>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', artists_path, class: 'nav-link fas fa-user-friends fa-3x h-icon faa-float animated-hover' %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', new_member_registration_path, class: 'nav-link fas fa-user-plus fa-3x h-icon faa-float animated-hover' %>
+          </li>
+          <li class="nav-item active m-4 navbar-right">
+            <%= link_to '', new_member_session_path, class: 'nav-link fas fa-sign-in-alt fa-3x h-icon faa-float animated-hover' %>
           </li>
         <% end %>
       </ul>
   </nav>
+  <div id="hamburger">
+    <span></span>
+  </div>
 </header>

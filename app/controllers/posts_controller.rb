@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   require 'date'
-  #before_action :authenticate_member!, only: [:create, :edit, :update, :destroy, :fav]
+  before_action :authenticate_member!, only: [:new, :create, :edit, :update, :destroy, :fav]
 
   def index
-    @posts = Post.where("schedule > ?", DateTime.now)
+    @posts = Post.where("schedule > ?", DateTime.now).page(params[:page]).per(4)
   end
 
   def new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
-    if @post.save!
+    if @post.save
       redirect_to post_path(@post)
     else
       render :new
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   end
   private
   def post_params
-    params.require(:post).permit(:artist_id, :title, :image, :introduction, :schedule, :watching_method, :detailed_url, :admission)
+    params.require(:post).permit(:artist_id, :title, :image, :introduction, :address, :schedule, :watching_method, :detailed_url, :admission)
   end
 
 end

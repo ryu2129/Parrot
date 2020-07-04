@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      artist: アーティスト
+    attributes:
+      artist:
+        name: アーティスト名
+    errors:
+      models:
+        artist:
+          attributes:
+            name:
+              format: '%{message}'
+              blank: この%{attribute}は１文字以上入力してください。
