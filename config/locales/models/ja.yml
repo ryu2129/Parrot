@@ -1,14 +1,14 @@
 ja:
   activerecord:
     models:
-      artist: アーティスト
+      post: 投稿
     attributes:
-      artist:
-        name: アーティスト名
-    errors:
-      models:
-        artist:
-          attributes:
-            name:
-              format: '%{message}'
-              blank: この%{attribute}は１文字以上入力してください。
+      post:
+        artist_id: アーティスト名　
+        title: ライブ名　
+        image: フライヤー　
+        introduction: イベント詳細　
+        address: 場所　
+        schedule: 日程　
+        detailed_url: 詳細URL　
+        admission: 料金　

@@ -1,10 +1,11 @@
 <%= render '/devise/shared/flash_messages' %>
+<div class="jscroll">
 
 <% if member_signed_in? %>
   <div class="container">
     <div class="row">
       <% @posts.each do |post| %>
-      <div class="card-deck col-6 mb-4">
+      <div class="card-deck col-12 col-lg-6 mb-4">
         <div class="card">
           <img class="card-img-top">
             <%= image_tag post.image.url %>
@@ -64,7 +65,6 @@
       <% end %>
     </div>
   </div>
-  <%= paginate @posts %>
 <% else %>
   <div class="body">
   <div class="container">
@@ -136,6 +136,7 @@
   </div>
 
 <% end %>
+</div>
 
 
 

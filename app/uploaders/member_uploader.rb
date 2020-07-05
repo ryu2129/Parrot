@@ -8,7 +8,7 @@ class MemberUploader < CarrierWave::Uploader::Base
 
   # サムネイル画像
   version :thumb do
-    process resize_to_fill: [100, 100]
+    process resize_to_fill: [100, 100, "Center"]
   end
 
   def extension_whitelist

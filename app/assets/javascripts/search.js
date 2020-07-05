@@ -4,16 +4,20 @@ $( document ).on('turbolinks:load', function() {
 
   function appendArtist(artist) {
     var html = `
-              <div class="card-deck col-6">
-                <a href="/artists/${artist.id}">
-                  <div class="card">
-                    <img class="card-img-top">
-                    <img class="img" src="${artist.image.url}">
-                    <h4 class="card-title text-center mb-4">
-                      ${artist.name}
-                    </h4>
+              <div class="container">
+                <div class="row">
+                  <div class="card-deck col-12 col-lg-6 mb-4 mt-4 text-center">
+                    <a href="/artists/${artist.id}">
+                      <div class="card">
+                        <img class="card-img-top">
+                        <img class="img" src="${artist.image.url}">
+                        <h4 class="card-title text-center mb-4">
+                          ${artist.name}
+                        </h4>
+                      </div>
+                    </a>
                   </div>
-                </a>
+                </div>
               </div>
               `
     search_list.append(html);
@@ -21,11 +25,15 @@ $( document ).on('turbolinks:load', function() {
 
   function appendErrMsgToHTML(msg) {
     var html = `
-              <div class="artist_content">
-              <p class="artist_name">
-              ${ msg }
-              </p>
-              </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="artist_content col-12 mt-4">
+                      <p class="artist_name">
+                        ${ msg }
+                      </p>
+                    </div>
+                  </div>
+                </div
               `
     search_list.append(html);
   }
@@ -45,7 +53,7 @@ $( document ).on('turbolinks:load', function() {
           appendArtist(artist);
         });
       } else {
-        appendErrMsgToHTML("一致するアーティストはいません");
+        appendErrMsgToHTML("一致するアーティストはおりません。\n お手数ですが、追加したいアーティストがいる場合は運営(ryu212920@gmail.com)までご連絡ください。");
       }
     })
     .fail(function() {
