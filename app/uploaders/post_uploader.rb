@@ -4,7 +4,7 @@ class PostUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
 
-  process resize_to_fit: [800, 250]
+  process resize_to_limit: [500, 700]
 
   # Choose what kind of storage to use for this uploader:
   storage :file

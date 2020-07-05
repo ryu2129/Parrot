@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="card-deck col-12 mb-4">
+    <div class="card-deck col-12 col-lg-6 mb-4">
       <div class="card">
         <img class="card-img-top">
           <%= image_tag @post.image.url %>
@@ -38,8 +38,8 @@
           <p></p>
 
           <% if @post.member == current_member %>
-            <%= link_to "編集", edit_post_path(@post) %>
-            <%= link_to "削除", post_path(@post), method: :delete,  data: {confirm: "本当に削除してもよろしいですか？"} %>
+            <%= link_to "編集", edit_post_path(@post), class: 'btn btn-info btn-block mb-4' %>
+            <%= link_to "削除", post_path(@post), method: :delete,  data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger btn-block' %>
           <% end %>
 
         </div>
@@ -47,27 +47,16 @@
     </div>
 
     <!-- コメント機能-->
-    <div class="container pt-5">
-      <div class="row">
-        <div class="card-deck col-12 mb-4">
-          <div class="card">
-            <div id="comments_area">
-                <%= render partial: 'comments/index', locals: { comments: @comments } %>
-            </div>
-          </div>
-        </div>
-        <div class="card-deck col-12 mb-4">
-          <div class="card">
-            <% if member_signed_in? %>
-              <div class="comment-create">
-                <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+    <div class="col-12 col-lg-6 mb-4">
+      <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
       </div>
+      <% if member_signed_in? %>
+        <div class="comment-create">
+          <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+        </div>
+      <% end %>
     </div>
     <!-- コメント機能ここまで-->
-
   </div>
 </div>

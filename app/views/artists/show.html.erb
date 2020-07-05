@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="card col-12">
-      <div class="h4">
-        <%= @artist.name %>
-      </div>
-      <div class="card-img-top ">
-        <%= image_tag @artist.image.url, class:"img-show" %>
-      </div>
-      <div class="card-body">
-        <div class="card-text">
-          <%= @artist.profile %>
-        </div>
+    <div class="card ">
+      <div class="card-img-top col-6 col-lg-6">
+        <%= image_tag @artist.image.url %>
       </div>
     </div>
+    <div class="card col-12 col-lg-6">
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= @artist.name %>
+        </h4>
+        <p class="card-text">
+          <%= @artist.profile %>
+        </p>
+      </div>
+    </div>
+  </div>
 
     <div class="col-12 align-items-center text-center h1 mt-4">
         ライブ予定一覧

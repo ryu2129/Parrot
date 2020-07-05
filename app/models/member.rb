@@ -9,7 +9,10 @@ class Member < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
   mount_uploader :image, MemberUploader
-  validates :profile, length: { maximum: 200 }
+  validates :image, presence: true
+  validates :name, presence: true
+  validates :profile, presence: true, length: { maximum: 200 }
+  validates :email, presence: true
 
 
   def self.guest

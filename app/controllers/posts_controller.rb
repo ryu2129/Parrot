@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_member!, only: [:new, :create, :edit, :update, :destroy, :fav]
 
   def index
-    @posts = Post.where("schedule > ?", DateTime.now).page(params[:page]).per(4)
+    @posts = Post.where("schedule > ?", DateTime.now)
   end
 
   def new

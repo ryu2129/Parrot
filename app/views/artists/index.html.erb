@@ -11,11 +11,11 @@
   <div class="container">
     <div class="row">
       <% @artists.each do |artist| %>
-        <div class="card-deck col-4 mb-4">
+        <div class="card-deck col-12 col-lg-4 mb-4 mt-4 text-center">
           <div class="card">
-          <img class="card-img-top mx-auto">
+          <img class="card-img-top  ">
             <%= link_to artist_path(artist) do %>
-              <%= image_tag artist.image.url, class:"img" %>
+              <%= image_tag artist.image.thumb.url, class:"img" %>
               <h4 class="card-title text-center mb-4">
                 <%= artist.name %>
               </h4>

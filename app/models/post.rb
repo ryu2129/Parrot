@@ -8,9 +8,10 @@ class Post < ApplicationRecord
   validates :artist_id, presence: true
   validates :title, presence: true
   validates :image, presence: true
-  validates :address, presence: true
   validates :introduction, presence: true
+  validates :address, presence: true
   validates :schedule, presence: true
+  validates :watching_method, presence: true
   validates :detailed_url, presence: true
   validates :admission, presence: true
   mount_uploader :image, PostUploader
