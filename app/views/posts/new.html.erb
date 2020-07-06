@@ -1,4 +1,24 @@
-<%= render './devise/shared/flash_messages' %>
+<div class="container">
+  <div class="row">
+  <div class="col-12">
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= I18n.t("errors.messages.not_saved",
+                    count: @post.errors.count,
+                    resource: @post.class.model_name.human.downcase)
+          %>
+        </h2>
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -6,12 +26,12 @@
     <%= form_for(@post) do |f| %>
     <table class="table">
       <tr>
-        <td class="align-middle"><%= f.label :アーティスト名 %></td>
+        <td class="align-middle"><%= f.label :"アーティスト" %></td>
         <td><%= f.collection_select :artist_id, Artist.all, :id, :name, include_blank: "選択してください"  %></td>
       </tr>
 
       <tr>
-        <td class="align-middle "><%= f.label :ライブ名 %></td>
+        <td class="align-middle "><%= f.label :"ライブ名" %></td>
         <td><%= f.text_field :title %></td>
       </tr>
 

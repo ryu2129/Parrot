@@ -5,7 +5,7 @@
         <%= image_tag @artist.image.url %>
       </div>
     </div>
-    <div class="card col-12 col-lg-6">
+    <div class="card col-12 col-lg-7">
       <div class="card-body">
         <h4 class="card-title">
           <%= @artist.name %>
@@ -17,13 +17,16 @@
     </div>
   </div>
 
+  <div class="row">
     <div class="col-12 align-items-center text-center h1 mt-4">
         ライブ予定一覧
     </div>
-    <hr class="border-dark my-5">
+  </div>
+  <hr class="border-dark my-5">
+  <div class="row">
       <% @posts.each do |post| %>
-        <div class="card-deck col-6 mb-4">
-          <div class="card">
+        <div class="card-deck col-12 col-lg-12 mb-4 mt-4">
+          <div class="card col-lg-6">
             <img class="card-img-top">
               <%= image_tag post.image.url %>
             <div class="card-body">
