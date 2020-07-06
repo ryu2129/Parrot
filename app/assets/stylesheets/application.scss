@@ -14,19 +14,32 @@
 
   @import "bootstrap";
 
-
-.field_with_errors {
-  display: contents;
-  background-color: #fcc;
-  padding: 2px;
-}
-.error_explanation {
-  background-color: #fcc;
-  padding: 2px;
+@font-face {
+  font-family: 'Quicksand-Bold';
+  src: font-url('/assets/Quicksand-Bold.ttf');
 }
 
 body {
   background-color: #DFEFED;
+  font-family: 'Quicksand-Bold';
+}
+
+.field_with_errors {
+  display: contents;
+  background-color: red;
+  padding: 2px;
+}
+#error_explanation {
+  color: red;
+  position: relative;
+  margin: 2em 0;
+  padding: 2em 2em;
+  border: solid 3px red;
+  border-radius: 8px;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
 }
 
 .btn-warning {
@@ -45,7 +58,6 @@ body {
   background-color: #517D99;
   border-color: #517D99;
 }
-
 
 .container-login {
   @extend .container-fluid;
@@ -84,6 +96,10 @@ body {
   border-radius: 50%;
 }
 
+.guest-icon {
+  width: 250px;
+  height: 250px;
+}
 .h-icon {
   color: #517D99;
 }
@@ -92,103 +108,36 @@ body {
   color: red;
 }
 
-// ハンバーガーメニュー
-header {
-  padding:30px;
-  background: #ccc;
+.navbar-dark {
+  color: #517D99;
+  border-color: transparent;
 }
-#nav-drawer {
-  position: relative;
-  padding-top: 22px;
+button:focus {
+  outline:0;
 }
-
-/*チェックボックス等は非表示に*/
-.nav-unshown {
-  display:none;
+.navbar-dark .navbar-toggler {
+  border-color: #6AC1B7;
 }
-
-/*アイコンのスペース*/
-#nav-open {
-  display: inline-block;
-  width: 30px;
-  height: 10px;
-  vertical-align: middle;
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(81,125,153,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-
-/*ハンバーガーの形をCSSで表現*/
-#nav-open span, #nav-open span:before, #nav-open span:after {
-  position: absolute;
-  height: 6px;/*線の太さ*/
-  width: 35px;/*長さ*/
-  border-radius: 6px;
-  background: #DFEFED;
-  display: block;
-  content: '';
-  cursor: pointer;
+.navbar-dark .navbar-nav .nav-link {
+    color:  #517D99;
 }
-#nav-open span:before {
-  bottom: -8px;
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+    color: #517D99;
 }
-#nav-open span:after {
-  bottom: -16px;
+@media screen and (max-width: 640px) {/* 640px以下*/
+    html{
+        font-size: 95%;
+    }
+    body{
+    line-height: 2;
+    }
+    h1{
+        font-size: 2.4rem;/* 24px*/
+    }
+    h2 {
+        font-size: 2rem;/* 20px*/
+    }
 }
-
-/*閉じる用の薄黒箇所*/
-#nav-close {
-  display: none;
-  position: fixed;
-  z-index: 99;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  opacity: 0;
-  transition: .9s ease-in-out;
-}
-
-/*メニューの中身*/
-#nav-content {
-  overflow: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  width: 75%;
-  max-width: 400px;/*最大幅（お好みで調整を）*/
-  height: 100%;
-  background: #6AC1B7;
-  transition: .3s ease-in-out;
-  -webkit-transform: translateX(-105%);
-  transform: translateX(-105%);
-}
-
-/*チェックがついたら表示させる*/
-#nav-input:checked ~ #nav-close {
-  display: block;
-  opacity: .5;
-}
-
-#nav-input:checked ~ #nav-content {
-  -webkit-transform: translateX(0%);
-  transform: translateX(0%);
-  box-shadow: 6px 0 25px rgba(0,0,0,.15);
-}
-
-.header-logo-menu{
- display: flex;
- display: -moz-flex;
- display: -o-flex;
- display: -webkit-flex;
- display: -ms-flex;
- flex-direction: row;
- -moz-flex-direction: row;
- -o-flex-direction: row;
- -webkit-flex-direction: row;
- -ms-flex-direction: row;
-}
-.logo-area{
-  text-align: center;
-  margin: auto;
-  font-size: 50px;
-  }
