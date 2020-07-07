@@ -1,6 +1,39 @@
 <header>
   <nav class="navbar navbar-expand-lg mb-5 navbar-dark", style="background-color: #6AC1B7;">
     <%= link_to 'Parrot', root_path, class:'navbar-brand', style:'font-size:40px; color: #517D99;'%>
+    <!-- about -->
+    <div class="about mt-4 mr-auto" data-toggle="modal" data-target="#exampleModal">
+      ?
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Parrot</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            「お気に入りのアーティストがたくさんいて、いつライブがあるのかわからない…」<br>
+            「え、このアーティストライブしていたの？　もっと早く知りたかった…」<br>
+            <p></p>
+            そんな悩みを解決する為に作られたのが、<br><u>ライブ情報共有アプリケーション<span class="h3 bold">Parrot</u></span>です！
+            <hr class="border-right my-5">
+            <h4>できること</h4>
+            <div class="mb-3 mt-3">①　<div class="fas fa-edit fa-1x"></div>Post　からアーティストのライブ情報を投稿！<br></div>
+            ②みんなの投稿が左上<span class="bold h5">Parrot</span>より確認できる！<br>
+            ③　<div class="fas fa-user-friends fa-1x mt-3"></div>Artist　から登録済みアーティストが確認でき、アーティスト名を押すと今後のライブ予定が一目でわかる！<br>
+            <p></p>
+            <p class="text-muted" style="font-size: 13px;">※ご連絡は　ryu212920@gmail.com　までお願いいたします。</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="#Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
     </button>

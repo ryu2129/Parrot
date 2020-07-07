@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_082304) do
+ActiveRecord::Schema.define(version: 2020_07_07_072822) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_082304) do
     t.float "longitude"
     t.integer "watching_method", default: 1, null: false
     t.string "detailed_url"
-    t.integer "admission"
+    t.string "admission"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_posts_on_artist_id"

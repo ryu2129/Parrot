@@ -143,15 +143,3 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "下記項目を修正してください。"
-    models:
-      post: 投稿
-    attributes:
-      post:
-        artist_id: アーティスト名　
-        title: ライブ名　
-        image: フライヤー　
-        introduction: イベント詳細　
-        address: 場所　
-        schedule: 日程　
-        detailed_url: 詳細URL　
-        admission: 料金　
