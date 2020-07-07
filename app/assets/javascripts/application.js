@@ -46,23 +46,21 @@ $(function() {
     }
   })
 })
-// 無限スクロール
-var jscrollOption = {
-  loadingHtml: '読み込み中', // 記事読み込み中の表示、画像等をHTML要素で指定することも可能
-  autoTrigger: true, // 次の表示コンテンツの読み込みを自動( true )か、ボタンクリック( false )にする
-  padding: 20, // autoTriggerがtrueの場合、指定したコンテンツの下から何pxで読み込むか指定
-  nextSelector: 'a.jscroll-next', // 次に読み込むコンテンツのURLのあるa要素を指定
-  contentSelector: '.jscroll' // 読み込む範囲を指定、指定がなければページごと丸っと読み込む
-}
-$('.jscroll').jscroll(jscrollOption);
 
-// ハンバーガーメニュー
-// $('.nav-button').on('click',function(){
-//   if( $(this).hasClass('active') ){
-//     $(this).removeClass('active');
-//     $('.nav-wrap').addClass('close').removeClass('open');
-//   }else {
-//     $(this).addClass('active');
-//     $('.nav-wrap').addClass('open').removeClass('close');
-//   }
-// });
+$( document ).on('turbolinks:load', function() {
+  var pagetop = $('#page_top');
+  pagetop.hide();
+  $(window).scroll(function () {
+      if ($(this).scrollTop() > 10) {  //100pxスクロールしたら表示
+          pagetop.fadeIn();
+      } else {
+          pagetop.fadeOut();
+      }
+  });
+  pagetop.click(function () {
+      $('body,html').animate({
+          scrollTop: 0
+      }, 800); //0.5秒かけてトップへ移動
+      return false;
+  });
+});

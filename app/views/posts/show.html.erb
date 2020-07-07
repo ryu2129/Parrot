@@ -5,37 +5,68 @@
         <img class="card-img-top">
           <%= image_tag @post.image.url %>
         <div class="card-body">
-          <h2 class="card-title">
-            <%= @post.artist.name %>
-          </h2>
+          <h5 class="text-muted">
+            <%= @post.schedule.mon %>月
+          </h5>
+          <h1 class="card-title">
+            <mark><%= @post.schedule.day %></mark>
+          </h1>
 
-          <h3 class="card-subtitle mb-2 text-muted">
+          <h4 class="card-subtitle mt-1 text-center mb-2">
+            <%= link_to artist_path(@post.artist) do %>
+              <u class="text-dark">[<%= @post.artist.name %>]</u><br>
+            <% end %>
+          </h4>
+          <h4 class="card-subtitle text-center mb-4">
             <%= @post.title %>
-          </h3>
+          </h4>
 
           <p class="card-text">
-            <%= @post.introduction %>
+            <div class="h5"><u>イベント詳細</u></div>
+              <%= @post.introduction %>
           </p>
 
-          <p><strong><u>開催日時</u></strong></p>
-          <%= @post.schedule.year %>/<%= @post.schedule.mon %>/<%= @post.schedule.day %><br>
-            Start:<%= @post.schedule.hour %>:<%= @post.schedule.min %>
+          <p class="card-text mb-2">
+            <div class="h5"><u>日程</u></div>
+            <%= @post.schedule.year %>年<%= @post.schedule.mon %>月<%= @post.schedule.day %>日　<%= @post.schedule.hour %>:<%= @post.schedule.min %>〜
+          </p>
           <p></p>
 
-          <p><strong><u>視聴方法</u></strong></p>
+          <p class="card-text mb-2">
+            <div class="h5"><u>視聴方法</u></div>
             <% if @post.watching_method == 0 %>
               ストリーミング
             <% elsif @post.watching_method == 1 %>
               ライブ
             <% end %>
+          </p>
           <p></p>
 
-          <p><strong><u>詳細URL</u></strong></p>
+          <p class="card-text mb-2">
+            <div class="h5"><u>詳細URL</u></div>
             <%= text_url_to_link(h(@post.detailed_url)).html_safe %>
+          </p>
 
-          <p><strong><u>料金</u></strong></p>
+          <p class="card-text mb-2">
+            <div class="h5"><u>料金</u></div>
             <%= @post.admission %>
-          <p></p>
+          <p class="mb-4"></p>
+
+          <% if member_signed_in? %>
+            <% if @post.favorited_by?(current_member) %>
+              <%= link_to fav_posts_path(@post), class:"fav", remote: true do %>
+                <div class="text-right">
+                  <i class="fa fa-heart mb-4" id="<%= @post.id %>"></i>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to fav_posts_path(@post), class: "fav", remote: true do %>
+                <div class="text-right">
+                  <i class="fa fa-heart-o mb-4" id="<%= @post.id %>"></i>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
 
           <% if @post.member == current_member %>
             <%= link_to "編集", edit_post_path(@post), class: 'btn btn-info btn-block mb-4' %>

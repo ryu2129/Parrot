@@ -6,7 +6,7 @@ $( document ).on('turbolinks:load', function() {
     var html = `
               <div class="container">
                 <div class="row">
-                  <div class="card-deck col-12 col-lg-6 mb-4 mt-4 text-center">
+                  <div class="card-deck col-12 col-lg-4 mb-4 mt-4 text-center">
                     <a href="/artists/${artist.id}">
                       <div class="card">
                         <img class="card-img-top">

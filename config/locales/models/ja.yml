@@ -4,7 +4,7 @@ ja:
       post: 投稿
     attributes:
       post:
-        artist_id: アーティスト名　
+        artist: アーティスト名　
         title: ライブ名　
         image: フライヤー　
         introduction: イベント詳細　
