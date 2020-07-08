@@ -78,6 +78,8 @@ gem 'mini_magick'
 
 gem 'pry-rails'
 
+gem 'simple_calendar', '~> 2.0'
+
 gem 'omniauth-twitter'
 
 gem 'dotenv-rails'

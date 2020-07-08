@@ -43,7 +43,7 @@
                           <div class="col-12 text-left mt-5">
                             <div id="comment-list mb-2">
                               <%= link_to member_path(comment.member.id) do %>
-                                <%= image_tag comment.member.image.url %>
+                                <%= image_tag comment.member.image.url, class:"member-icon" %>
                                 <%= "@#{comment.member.name}"  %>
                               <% end %>
                               <%= comment.content %>
