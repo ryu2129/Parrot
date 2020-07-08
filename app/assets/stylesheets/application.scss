@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+   *= require simple_calendar
  */
 
   @import "bootstrap";
@@ -150,8 +151,8 @@ button:focus {
 }
 // ページトップボタン
 #page_top{
-  width: 80px;
-  height: 110px;
+  width: 40px;
+  height: 90px;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -164,9 +165,9 @@ button:focus {
 }
 #page_top a::before{
   font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
+  font-weight: 770;
   content: '\f139';
-  font-size: 70px;
+  font-size: 35px;
   color: #517D99;
 }
 mark {
@@ -183,4 +184,62 @@ mark {
 .card:hover {
   transform: scale(1.04);
   box-shadow: 0 5px 20px #999;
+}
+
+.calendar-heading {
+  padding: 15px 0;
+  font-size: 20px;
+}
+.calendar-title {
+  font-size: 25px;
+}
+a {
+  color: black;
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {
+    color: red;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    color: blue;
+  }
+
+  .today {
+    background-color: #DFEFED;
+  }
+  .past {
+    background-color: #dddddd;
+  }
+  .future {
+    background-color: #ffffff;
+  }
+
+  .start-date {}
+
+  .prev-month {
+    background-color: #dddddd
+  }
+  .next-month {
+    background-color: #dddddd
+  }
+  .current-month {
+
+  }
+
+  .has-events {}
+}
+footer {
+  height: 40px;
+  background-color: #314b5c;
+}
+.footer-text {
+  color: white;
 }

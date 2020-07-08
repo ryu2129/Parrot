@@ -4,8 +4,20 @@
 <% if member_signed_in? %>
   <div class="container">
     <div class="row">
+      <div class="card mb-4 mt-2 col-12 mx-auto">
+        <%= week_calendar events: @posts do |date, posts| %>
+          <%= date.day %>
+          <% posts.each do |post| %>
+            <div class="text-center ">
+              <u><%= link_to post.artist.name, post %></u>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mt-4">
       <% @posts.each do |post| %>
-      <div class="card-deck col-12 col-lg-6 mb-4">
+      <div class="card-deck col-12 col-lg-6 mb-4 mx-auto">
         <div class="card">
           <img class="card-img-top">
             <%= image_tag post.image.url %>
@@ -102,8 +114,20 @@
 
   <div class="container">
     <div class="row">
+      <div class="card mb-4 mt-2 col-12 mx-auto">
+        <%= week_calendar events: @posts do |date, posts| %>
+          <%= date.day %>
+          <% posts.each do |post| %>
+            <div class="text-center ">
+              <u><%= link_to post.artist.name, post %></u>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
       <% @posts.each do |post| %>
-      <div class="card-deck col-12 col-lg-6 mb-4">
+      <div class="card-deck col-12 col-lg-6 mb-4 mt-4 mx-auto">
         <div class="card">
           <img class="card-img-top">
             <%= image_tag post.image.url %>
@@ -112,7 +136,7 @@
               <%= post.schedule.mon %>月
             </h5>
             <h1 class="card-title">
-              <%= post.schedule.day %>
+              <mark><%= post.schedule.day %></mark>
             </h1>
 
             <h4 class="card-subtitle mt-1 text-center mb-2">
@@ -125,13 +149,13 @@
             </h4>
 
             <p class="card-text">
-              <div class="h5"><u><mark>日程</mark></u></div>
+              <div class="h5"><u>日程</u></div>
               <%= post.schedule.year %>年<%= post.schedule.mon %>月<%= post.schedule.day %>日　<%= post.schedule.hour %>:<%= post.schedule.min %>〜
             </p>
             <p></p>
 
             <p class="card-text mb-2">
-              <div class="h5"><u><mark>視聴方法</mark></u></div>
+              <div class="h5"><u>視聴方法</u></div>
                 <% if post.watching_method == 0 %>
                   ストリーミング
                 <% elsif post.watching_method == 1 %>
@@ -141,7 +165,7 @@
             </p>
 
             <p class="card-text mb-2">
-              <div class="h5"><u><mark>料金</mark></u></div>
+              <div class="h5"><u>料金</u></div>
                 <%= post.admission %>
             </p>
             <p></p>

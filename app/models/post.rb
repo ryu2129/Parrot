@@ -18,4 +18,8 @@ class Post < ApplicationRecord
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?
   end
+
+  def start_time
+    self.schedule
+  end
 end
