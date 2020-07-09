@@ -69,7 +69,7 @@ body {
 }
 
 .img {
-  margin: 40px ;
+  margin: 20px 30px ;
   width: 250px;
   height: 250px;
   object-fit: cover;
@@ -239,7 +239,33 @@ a {
 footer {
   height: 40px;
   background-color: #314b5c;
+  clear: both;
 }
 .footer-text {
   color: white;
+}
+
+// インクリメンタルサーチではBootstrapが反映されない為、CSSにてレイアウト設定
+.container-title {
+  margin-left:33px;
+}
+.container-search {
+  margin-left: 33px;
+}
+.container-artist {
+  width: 100%;
+  margin: 15px ;
+}
+.artist-card {
+  display: inline-block;
+  justify-content: center;
+  width: 340px;
+  float: left;
+  margin: 5px 0px 40px 2px;
+}
+
+textarea {
+  resize: none;
+  width:200px;
+  height:60px;
 }

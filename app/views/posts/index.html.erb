@@ -3,6 +3,11 @@
 
 <% if member_signed_in? %>
   <div class="container">
+    <div class="row mb-4">
+      <h1><strong><u>Time line</u></strong></h1>
+    </div>
+  </div>
+  <div class="container">
     <div class="row">
       <div class="card mb-4 mt-2 col-12 mx-auto">
         <%= week_calendar events: @posts do |date, posts| %>
@@ -98,6 +103,11 @@
   </div>
 <!-- 未ログイン時-->
 <% else %>
+  <div class="container">
+    <div class="row mb-4">
+      <h1><strong><u>Time line</u></strong></h1>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="main text-center col-12">

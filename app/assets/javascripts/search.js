@@ -4,11 +4,10 @@ $( document ).on('turbolinks:load', function() {
 
   function appendArtist(artist) {
     var html = `
-              <div class="container">
-                <div class="row">
-                  <div class="card-deck col-12 col-lg-4 mb-4 mt-4 text-center">
+              <div class="container-artist">
+                  <div class="card-deck artist-card">
                     <a href="/artists/${artist.id}">
-                      <div class="card">
+                      <div class="card card-artist">
                         <img class="card-img-top">
                         <img class="img" src="${artist.image.url}">
                         <h4 class="card-title text-center mb-4">
@@ -18,7 +17,6 @@ $( document ).on('turbolinks:load', function() {
                     </a>
                   </div>
                 </div>
-              </div>
               `
     search_list.append(html);
 }
