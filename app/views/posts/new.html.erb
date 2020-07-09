@@ -21,6 +21,12 @@
 </div>
 
 <div class="container">
+  <div class="row mb-4">
+    <h1><strong><u>Post</u></strong></h1>
+  </div>
+</div>
+
+<div class="container">
   <div class="row">
   <div class="col-12">
     <%= form_for(@post) do |f| %>
@@ -36,7 +42,7 @@
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :フライヤー %></td>
+        <td class="align-middle"><%= f.label :"フライヤー" %></td>
         <td>
           <img id="img_prev" class='hidden' />
           <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id: 'post_img' %>
@@ -44,22 +50,22 @@
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :イベント詳細 %></td>
+        <td class="align-middle"><%= f.label :"イベント概要" %></td>
         <td><%= f.text_area :introduction, placeholder: "イベント概要等" %></td>
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :会場 %></td>
+        <td class="align-middle"><%= f.label :"会場" %></td>
         <td><%= f.text_field :address %></td>
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :日程 %></td>
+        <td class="align-middle"><%= f.label :"日程" %></td>
         <td><%= f.datetime_field :schedule, ignore_data:true %></td>
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :視聴方法 %></td>
+        <td class="align-middle"><%= f.label :"視聴方法" %></td>
         <td>
           <%= f.radio_button :watching_method, 0, checked: true %>
           <%= f.label :ストリーミング %><br>
@@ -69,12 +75,12 @@
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :詳細URL %>
+        <td class="align-middle"><%= f.label :"詳細URL" %>
         <td><%= f.text_field :detailed_url, placeholder: "チケット購入URL等" %></td>
       </tr>
 
       <tr>
-        <td class="align-middle"><%= f.label :料金 %></td>
+        <td class="align-middle"><%= f.label :"料金" %></td>
         <td><%= f.text_field :admission, placeholder: "Free or 未定 でも可" %></td>
       </tr>
 

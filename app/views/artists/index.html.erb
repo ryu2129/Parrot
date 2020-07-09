@@ -1,17 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <%= text_field_tag :keyword,"", class: "search_input", placeholder: "Artist Name" %>
-      <%= submit_tag "Search", class: "search_btn" %>
-    </div>
-  </div>
+<div class="container-title">
+  <h1><strong><u>Artist</u></strong></h1>
+</div>
+
+<div class="container-search mt-4">
+  <%= text_field_tag :keyword,"", class: "search_input", placeholder: "Artist Name" %>
+  <%= submit_tag "Search", class: "search_btn" %>
 </div>
 
 <div class="contents">
-  <div class="container">
-    <div class="row">
+  <div class="container-artist">
       <% @artists.each do |artist| %>
-        <div class="card-deck col-12 col-lg-4 mb-4 mt-4 text-center">
+        <div class="card-deck artist-card">
           <div class="card">
           <img class="card-img-top  ">
             <%= link_to artist_path(artist) do %>
@@ -23,6 +22,5 @@
           </div>
         </div>
       <% end %>
-    </div>
   </div>
 </div>

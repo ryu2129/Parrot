@@ -1,9 +1,12 @@
 <div class="container">
+  <div class="row mb-4">
+    <h1><strong><u>My page</u></strong></h1>
+  </div>
+</div>
+<div class="container">
   <div class="row">
     <div class="card col-12 mb-4">
-      <h4><strong>マイページ</strong></h4>
-        </h2>
-        <h5><u>アイコン</u></h5>
+        <h5 class="mt-4"><u>アイコン</u></h5>
           <%= image_tag @member.image.url, class:"guest-icon mx-auto" %>
       <div class="card-body">
         <h2 class="card-title">
@@ -29,7 +32,7 @@
         <a href="#memberpost" class="nav-link active text-info" data-toggle="tab">投稿　<%= @member.posts.count %></a>
       </li>
       <li class="nav-item col-lg-6 text-center">
-        <a href="#memberfav" class="nav-link text-info" data-toggle="tab">いいね　<%= @member.favorites.count %></a>
+        <a href="#memberfav" class="nav-link text-info" data-toggle="tab">行きたいかも　<%= @member.favorites.count %></a>
       </li>
     </ul>
   </div>
