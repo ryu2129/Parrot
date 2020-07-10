@@ -8,14 +8,16 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'members/omniauth_callbacks'
   }
 
+  #Twitterログイン
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  #ゲストログイン
   devise_scope :member do
     post '/members/guest_sign_in', to: 'members/sessions#new_guest'
   end
 
-  get 'abouts/about'
+  #お気に入り
   get 'posts/fav/:id' => 'posts#fav', as: "fav_posts"
   resources :members, only: [:show, :create, :update] do
     collection do
@@ -23,10 +25,12 @@ Rails.application.routes.draw do
     end
   end
 
+  #コメント
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
 
+  #インクリメンタルサーチ
   resources :artists, only: [:index, :show] do
     collection do
       get 'search'
