@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="row mb-4">
+    <h1><strong><u>Edit</u></strong></h1>
+  </div>
+</div>
+<div class="container">
   <div class="row">
   <div class="col-12">
     <%= form_for(@post) do |f| %>
@@ -55,12 +60,16 @@
         <td class="align-middle"><%= f.label :料金 %></td>
         <td><%= f.text_field :admission %></td>
       </tr>
+    </table>
 
+    <table>
       <tr>
-        <td><%= f.submit :"Go", class: "btn btn-primary btn-block" %></td>
+        <td><%= link_to "Back", posts_path, class: "back btn btn-primary btn-block" %></td>
+        <td><%= f.submit :"Go", data: { confirm: "虚偽の投稿ではないですか？\n虚偽投稿の場合、アカウント停止をさせていただく可能性があります。" },  class: "btn btn-primary btn-block" %></td>
       </tr>
     </table>
+
     <% end %>
-    </div>
+  </div>
   </div>
 </div>
