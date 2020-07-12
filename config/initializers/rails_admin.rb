@@ -2,13 +2,13 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  config.authenticate_with do
-  warden.authenticate! scope: :member
-  end
-  config.current_user_method(&:current_member)
+  #config.authenticate_with do
+  #warden.authenticate! scope: :member
+  #end
+  #config.current_user_method(&:current_member)
 
   ## == CancanCan ==
-  config.authorize_with :cancancan
+  #config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
