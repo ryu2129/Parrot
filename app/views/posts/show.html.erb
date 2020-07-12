@@ -1,44 +1,85 @@
 <div class="container">
+  <div class="row mb-4">
+    <h1><strong><u>Post show</u></strong></h1>
+  </div>
+</div>
+<div class="container">
   <div class="row">
-    <div class="card-deck col-12 mb-4">
+    <div class="card-deck col-12 col-lg-6 mb-4">
       <div class="card">
         <img class="card-img-top">
           <%= image_tag @post.image.url %>
         <div class="card-body">
-          <h2 class="card-title">
-            <%= @post.artist.name %>
-          </h2>
+          <h5 class="text-muted">
+            <%= @post.schedule.mon %>月
+          </h5>
+          <h1 class="card-title">
+            <mark><%= @post.schedule.day %></mark>
+          </h1>
 
-          <h3 class="card-subtitle mb-2 text-muted">
+          <h4 class="card-subtitle mt-1 text-center mb-2">
+            <%= link_to artist_path(@post.artist) do %>
+              <u class="text-dark">[<%= @post.artist.name %>]</u><br>
+            <% end %>
+          </h4>
+          <h4 class="card-subtitle text-center mb-4">
             <%= @post.title %>
-          </h3>
+          </h4>
 
           <p class="card-text">
-            <%= @post.introduction %>
+            <div class="h5"><u>イベント詳細</u></div>
+              <%= @post.introduction %>
           </p>
 
-          <p><strong><u>開催日時</u></strong></p>
-          <%= @post.schedule %>
+          <p class="card-text mb-2">
+            <div class="h5"><u>日程</u></div>
+            <%= @post.schedule.year %>年<%= @post.schedule.mon %>月<%= @post.schedule.day %>日　<%= @post.schedule.hour %>:<%= @post.schedule.min %>〜
+          </p>
           <p></p>
 
-          <p><strong><u>視聴方法</u></strong></p>
+          <p class="card-text mb-2">
+            <div class="h5"><u>視聴方法</u></div>
             <% if @post.watching_method == 0 %>
               ストリーミング
             <% elsif @post.watching_method == 1 %>
               ライブ
             <% end %>
+          </p>
           <p></p>
 
-          <p><strong><u>詳細URL</u></strong></p>
-            <%= @post.detailed_url %>
+          <p class="card-text mb-2">
+            <div class="h5"><u>詳細URL</u></div>
+            <%= text_url_to_link(h(@post.detailed_url)).html_safe %>
+          </p>
 
-          <p><strong><u>料金</u></strong></p>
-            <%= @post.admission %>
-          <p></p>
+          <p class="card-text mb-2">
+            <div class="h5"><u>料金</u></div>
+            <% if @post.admission =~ /\A[1-9][0-9]*\z/ %>
+              <%= @post.admission.to_i.to_s(:delimited) %>円
+            <% else  %>
+              <%= @post.admission %>
+            <% end %>
+          <p class="mb-4"></p>
+
+          <% if member_signed_in? %>
+            <% if @post.favorited_by?(current_member) %>
+              <%= link_to fav_posts_path(@post), class:"fav", remote: true do %>
+                <div class="text-right">
+                  <i class="fa fa-heart mb-4" id="<%= @post.id %>"></i>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to fav_posts_path(@post), class: "fav", remote: true do %>
+                <div class="text-right">
+                  <i class="fa fa-heart-o mb-4" id="<%= @post.id %>"></i>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
 
           <% if @post.member == current_member %>
-            <%= link_to "編集", edit_post_path(@post) %>
-            <%= link_to "削除", post_path(@post), method: :delete,  data: {confirm: "本当に削除してもよろしいですか？"} %>
+            <%= link_to "編集", edit_post_path(@post), class: 'btn btn-info btn-block mb-4' %>
+            <%= link_to "削除", post_path(@post), method: :delete,  data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger btn-block' %>
           <% end %>
 
         </div>
@@ -46,27 +87,16 @@
     </div>
 
     <!-- コメント機能-->
-    <div class="container pt-5">
-      <div class="row">
-        <div class="card-deck col-12 mb-4">
-          <div class="card">
-            <div id="comments_area">
-                <%= render partial: 'comments/index', locals: { comments: @comments } %>
-            </div>
-          </div>
-        </div>
-        <div class="card-deck col-12 mb-4">
-          <div class="card">
-            <% if member_signed_in? %>
-              <div class="comment-create">
-                <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+    <div class="col-12 col-lg-6 mb-4">
+      <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
       </div>
+      <% if member_signed_in? %>
+        <div class="comment-create">
+          <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+        </div>
+      <% end %>
     </div>
     <!-- コメント機能ここまで-->
-
   </div>
 </div>

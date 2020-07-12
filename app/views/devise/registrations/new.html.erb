@@ -1,35 +1,52 @@
-<h1><%= t('.sign_up') %></h1>
+<%= render '/devise/shared/flash_messages' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 align-items-center text-center h1"><%= t('.sign_up') %>
+      </div>
+    <div class="col-8 mx-auto ">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= bootstrap_devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= bootstrap_devise_error_messages! %>
+        <div class="form-group mt-4">
+          <%= f.label :アイコン %>
+          <img id="img_prev" class="hidden" />
+          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', autocomplete: 'image',required: true, id: 'post_img' %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :ニックネーム %>
-    <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control', required: true %>
+        <div class="form-group">
+          <%= f.label :ニックネーム %>
+          <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control', required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :プロフィール %>
+          <%= f.text_area :profile, autofocus: true, autocomplete: 'name', class: 'form-control', required: true, placeholder: "例：日本のHIPHOPが好きです。よろしくお願いします🙋🏻‍♂️" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :パスワード %>
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', required: true, minlength: @minimum_password_length, maxlength: '30' %>
+
+          <% if @minimum_password_length %>
+            <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :パスワード（もう一度お願いします） %>
+          <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+      <%= render 'devise/shared/links' %>
+    </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', required: true, minlength: @minimum_password_length, maxlength: '30' %>
-
-    <% if @minimum_password_length %>
-      <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :パスワード（もう一度お願いします） %>
-    <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%= render 'devise/shared/links' %>

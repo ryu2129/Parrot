@@ -10,9 +10,49 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+   *= require simple_calendar
  */
 
   @import "bootstrap";
+
+body {
+  background-color: #DFEFED;
+}
+
+.field_with_errors {
+  display: contents;
+  background-color: red;
+  padding: 2px;
+}
+#error_explanation {
+  color: red;
+  position: relative;
+  margin: 2em 0;
+  padding: 2em 2em;
+  border: solid 3px red;
+  border-radius: 8px;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #517D99;
+  border-color: #517D99;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #517D99;
+  border-color: #517D99;
+}
+
+.btn-warning:hover {
+  color: #fff;
+  background-color: #517D99;
+  border-color: #517D99;
+}
 
 .container-login {
   @extend .container-fluid;
@@ -29,7 +69,7 @@
 }
 
 .img {
-  margin:20px;
+  margin: 20px 30px ;
   width: 250px;
   height: 250px;
   object-fit: cover;
@@ -44,17 +84,193 @@
 }
 
 .member-icon {
-  margin:20px;
+  margin: 5px;
   width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
 }
+#img_prev {
+  max-width: 250px;
+  max-height: 500px;
+}
 
+
+.guest-icon {
+  width: 250px;
+  height: 250px;
+}
 .h-icon {
   color: #517D99;
 }
 
 .fa-heart {
+  color: red;
+}
+
+.navbar-dark {
+  color: #517D99;
+  border-color: transparent;
+}
+button:focus {
+  outline:0;
+}
+
+.about {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  text-align:center;
+  line-height: 20px;
+  border-radius: 50%;
+  border: solid 3px #517D99;
+  color: #517D99;
+  font-size: 12px;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #6AC1B7;
+}
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(81,125,153,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-dark .navbar-nav .nav-link {
+    color:  #517D99;
+}
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+    color: #517D99;
+}
+@media screen and (max-width: 640px) {/* 640px以下*/
+    html{
+        font-size: 65%;
+    }
+    body{
+    line-height: 2;
+    }
+    h1{
+        font-size: 2.4rem;/* 24px*/
+    }
+    h2 {
+        font-size: 2rem;/* 20px*/
+    }
+}
+// ページトップボタン
+#page_top{
+  width: 40px;
+  height: 90px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  opacity: 0.6;
+}
+#page_top a{
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 770;
+  content: '\f139';
+  font-size: 35px;
+  color: #517D99;
+}
+mark {
+  background-color: #517D99;
+  border-radius: 10px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px #999;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  }
+.card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 5px 20px #999;
+}
+
+.calendar-heading {
+  padding: 15px 0;
+  font-size: 20px;
+}
+.calendar-title {
+  font-size: 25px;
+}
+a {
+  color: black;
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {
     color: red;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    color: blue;
+  }
+
+  .today {
+    background-color: #DFEFED;
+  }
+  .past {
+    background-color: #dddddd;
+  }
+  .future {
+    background-color: #ffffff;
+  }
+
+  .start-date {}
+
+  .prev-month {
+    background-color: #dddddd
+  }
+  .next-month {
+    background-color: #dddddd
+  }
+  .current-month {
+
+  }
+
+  .has-events {}
+}
+footer {
+  height: 40px;
+  background-color: #314b5c;
+  clear: both;
+}
+.footer-text {
+  color: white;
+}
+
+// インクリメンタルサーチではBootstrapが反映されない為、CSSにてレイアウト設定
+.container-title {
+  margin-left:33px;
+}
+.container-search {
+  margin-left: 33px;
+}
+.container-artist {
+  width: 100%;
+  margin: 15px ;
+}
+.artist-card {
+  display: inline-block;
+  justify-content: center;
+  width: 340px;
+  float: left;
+  margin: 5px 0px 40px 2px;
+}
+
+textarea {
+  resize: none;
+  width:200px;
+  height:60px;
 }

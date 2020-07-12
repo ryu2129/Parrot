@@ -1,57 +1,216 @@
-<div class="container">
-  <div class="row">
-    <% @posts.each do |post| %>
-    <div class="card-deck col-6 mb-4">
-      <div class="card">
-        <img class="card-img-top">
-        <%= image_tag post.image.url %>
-        <div class="card-body">
-          <h2 class="card-title">
-            <%= post.artist.name %>
-          </h2>
+<%= render '/devise/shared/flash_messages' %>
+<div class="jscroll">
 
-          <h3 class="card-subtitle mb-2 text-muted">
-            <%= post.title %>
-          </h3>
-
-          <%= post.schedule %>
-          <p></p>
-
-            <% if post.watching_method == 0 %>
-              ストリーミング
-            <% elsif post.watching_method == 1 %>
-              ライブ
-            <% end %>
-            <p></p>
-
-            <%= post.admission %>
-          <p></p>
-
-          <%= link_to post_path(post) do %>
-            <p class="btn btn-primary">
-              詳細はこちら
-            </p>
+<% if member_signed_in? %>
+  <div class="container">
+    <div class="row mb-4">
+      <h1><strong><u>Time line</u></strong></h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="card mb-4 mt-2 col-12 mx-auto">
+        <%= week_calendar events: @posts do |date, posts| %>
+          <%= date.day %>
+          <% posts.each do |post| %>
+            <div class="text-center ">
+              <u><%= link_to post.artist.name, post %></u>
+            </div>
           <% end %>
-
-          <% if post.favorited_by?(current_member) %>
-            <%= link_to fav_posts_path(post), class:"fav", remote: true do %>
-              <i class="fa fa-heart" id="<%= post.id %>"></i>
-            <% end %>
-          <% else %>
-            <%= link_to fav_posts_path(post), class: "fav", remote: true do %>
-              <i class="fa fa-heart-o" id="<%= post.id %>"></i>
-            <% end %>
-          <% end %>
-
-
-          <div class="" >
-            <%= image_tag post.member.image.url, class:"member-icon" %>
-          </div>
-            <%= post.member.name %>
-
-        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
+    <div class="row mt-4">
+      <% @posts.each do |post| %>
+      <div class="card-deck col-12 col-lg-6 mb-4 mx-auto">
+        <div class="card">
+          <img class="card-img-top">
+            <%= image_tag post.image.url %>
+          <div class="card-body">
+            <h5 class="text-muted month">
+              <%= post.schedule.mon %>月
+            </h5>
+            <h1 class="card-title day">
+              <mark><%= post.schedule.day %></mark>
+            </h1>
+
+            <h4 class="card-subtitle mt-1 text-center mb-2">
+              <%= link_to artist_path(post.artist) do %>
+                <u class="text-dark">[<%= post.artist.name %>]</u><br>
+              <% end %>
+            </h4>
+            <h4 class="card-subtitle  text-center mb-4">
+              <%= post.title %>
+            </h4>
+
+            <p class="card-text">
+              <div class="h5"><u>日程</u></div>
+              <%= post.schedule.year %>年<%= post.schedule.mon %>月<%= post.schedule.day %>日　<%= post.schedule.hour %>:<%= post.schedule.min %>〜
+            </p>
+            <p></p>
+
+            <p class="card-text mb-2">
+              <div class="h5"><u>視聴方法</u></div>
+                <% if post.watching_method == 0 %>
+                  ストリーミング
+                <% elsif post.watching_method == 1 %>
+                  ライブ
+                <% end %>
+              <p></p>
+            </p>
+
+            <p class="card-text mb-2">
+              <div class="h5"><u>料金</u></div>
+              <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
+                <%= post.admission.to_i.to_s(:delimited) %>円
+              <% else  %>
+                <%= post.admission %>
+              <% end %>
+            </p>
+            <p></p>
+
+            <%= link_to post_path(post) do %>
+              <p class="btn btn-primary mt-2">
+                詳細はこちら
+              </p>
+            <% end %>
+
+              <% if post.favorited_by?(current_member) %>
+                <%= link_to fav_posts_path(post), class:"fav", remote: true do %>
+                  <div class="text-right">
+                    <i class="fa fa-heart " id="<%= post.id %>"></i>
+                  </div>
+                <% end %>
+              <% else %>
+                <%= link_to fav_posts_path(post), class: "fav", remote: true do %>
+                  <div class="text-right">
+                    <i class="fa fa-heart-o" id="<%= post.id %>"></i>
+                  </div>
+                <% end %>
+              <% end %>
+
+
+            <div class="text-right" >
+            <%= link_to member_path(post.member_id) do %>
+              <%= image_tag post.member.image.url, class:"member-icon" %>
+              <span class="text-dark">
+                <%= post.member.name %>
+              </span>
+            <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
-</div>
+
+<!-- 未ログイン時-->
+<% else %>
+  <div class="container">
+    <div class="row mb-4">
+      <h1><strong><u>Time line</u></strong></h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="main text-center col-12">
+        <h1><span class="display-1"><strong>Parrot</strong></span></h1>
+        <div></div>
+        <h4 class="info mt-4">
+          あなたの好きなアーティストのライブ情報を共有できるSNS<br>
+        </h4>
+        <%= link_to "Let's Post！", new_member_session_path, class:"btn btn-warning btn-lg home-btn mt-4 mb-4" %>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="card mb-4 mt-2 col-12 mx-auto">
+        <%= week_calendar events: @posts do |date, posts| %>
+          <%= date.day %>
+          <% posts.each do |post| %>
+            <div class="text-center ">
+              <u><%= link_to post.artist.name, post %></u>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <% @posts.each do |post| %>
+      <div class="card-deck col-12 col-lg-6 mb-4 mt-4 mx-auto">
+        <div class="card">
+          <img class="card-img-top">
+            <%= image_tag post.image.url %>
+          <div class="card-body">
+            <h5 class="text-muted">
+              <%= post.schedule.mon %>月
+            </h5>
+            <h1 class="card-title">
+              <mark><%= post.schedule.day %></mark>
+            </h1>
+
+            <h4 class="card-subtitle mt-1 text-center mb-2">
+              <%= link_to artist_path(post.artist) do %>
+                <u class="text-dark">[<%= post.artist.name %>]</u><br>
+              <% end %>
+            </h4>
+            <h4 class="card-subtitle  text-center mb-4">
+              <%= post.title %>
+            </h4>
+
+            <p class="card-text">
+              <div class="h5"><u>日程</u></div>
+              <%= post.schedule.year %>年<%= post.schedule.mon %>月<%= post.schedule.day %>日　<%= post.schedule.hour %>:<%= post.schedule.min %>〜
+            </p>
+            <p></p>
+
+            <p class="card-text mb-2">
+              <div class="h5"><u>視聴方法</u></div>
+                <% if post.watching_method == 0 %>
+                  ストリーミング
+                <% elsif post.watching_method == 1 %>
+                  ライブ
+                <% end %>
+              <p></p>
+            </p>
+
+            <p class="card-text mb-2">
+              <div class="h5"><u>料金</u></div>
+              <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
+                <%= post.admission.to_i.to_s(:delimited) %>円
+              <% else  %>
+                <%= post.admission %>
+              <% end %>
+            </p>
+            <p></p>
+
+            <%= link_to post_path(post) do %>
+              <p class="btn btn-primary mt-2">
+                詳細はこちら
+              </p>
+            <% end %>
+
+            <div class="text-right" >
+              <%= link_to member_path(post.member_id) do %>
+                <%= image_tag post.member.image.url, class:"member-icon" %>
+                <span class="text-dark">
+                  <%= post.member.name %>
+                </span>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+

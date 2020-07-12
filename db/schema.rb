@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_111105) do
+ActiveRecord::Schema.define(version: 2020_07_07_072822) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -50,6 +50,9 @@ ActiveRecord::Schema.define(version: 2020_06_30_111105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.string "uid"
+    t.string "nickname"
+    t.string "provider"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["name"], name: "index_members_on_name"
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_111105) do
     t.float "longitude"
     t.integer "watching_method", default: 1, null: false
     t.string "detailed_url"
-    t.integer "admission"
+    t.string "admission"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_posts_on_artist_id"

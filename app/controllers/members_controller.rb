@@ -1,7 +1,9 @@
 class MembersController < ApplicationController
+  before_action :authenticate_member!
 
   def show
     @member = Member.find(params[:id])
+    @posts = @member.posts.where("schedule > ?", DateTime.now)
   end
 
   def edit

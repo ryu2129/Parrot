@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        artist: アーティスト名　
+        title: ライブ名　
+        image: フライヤー　
+        introduction: イベント詳細　
+        address: 場所　
+        schedule: 日程　
+        detailed_url: 詳細URL　
+        admission: 料金　
