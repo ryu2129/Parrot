@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_072822) do
+ActiveRecord::Schema.define(version: 2020_07_12_100823) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_072822) do
     t.string "uid"
     t.string "nickname"
     t.string "provider"
+    t.boolean "admin_flg"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["name"], name: "index_members_on_name"
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true

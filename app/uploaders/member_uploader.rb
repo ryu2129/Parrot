@@ -26,7 +26,7 @@ class MemberUploader < CarrierWave::Uploader::Base
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :fog
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(member)
-    if member.try(:admin?)
+    if member && member.admin_flg?
       can :access, :rails_admin
       can :manage, :all
     end
