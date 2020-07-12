@@ -5,9 +5,9 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :member_id,  presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: {minimum:1}
   validates :image, presence: true
-  validates :introduction, presence: true
+  validates :introduction, presence: true, length: {minimum:1}
   validates :address, presence: true
   validates :schedule, presence: true
   validates :watching_method, presence: true
