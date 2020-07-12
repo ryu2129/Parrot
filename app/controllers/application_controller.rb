@@ -1,16 +1,15 @@
 class ApplicationController < ActionController::Base
 
-  #authorize_resource
 
   def current_ability
     #binding.pry
     @current_ability ||= Ability.new(current_member)
   end
 
-  #rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied do |exception|
     # root_urlにかっ飛ばす。
-    #redirect_to root_path
-  #end
+    redirect_to(main_app.root_path, alert: "このページは表示できません。")
+  end
 
   def authenticate_member
     if current_member == nil
