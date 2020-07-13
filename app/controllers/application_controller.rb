@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    posts_path
+    root_path
   end
   #ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
