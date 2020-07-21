@@ -1,5 +1,16 @@
 class ApplicationController < ActionController::Base
 
+
+  def current_ability
+    #binding.pry
+    @current_ability ||= Ability.new(current_member)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    # root_urlにかっ飛ばす。
+    redirect_to(main_app.root_path, alert: "このページは表示できません。")
+  end
+
   def authenticate_member
     if current_member == nil
       flash[:notice] = "ログインが必要です"
@@ -22,7 +33,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    posts_path
+    root_path
   end
   #ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)

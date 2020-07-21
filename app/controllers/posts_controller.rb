@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_member!, only: [:new, :create, :edit, :update, :destroy, :fav]
 
   def index
-    @posts = Post.where("schedule > ?", DateTime.now).order(created_at: :desc)
+    @posts = Post.where("schedule > ?", DateTime.now).order("schedule ASC")
   end
 
   def new
