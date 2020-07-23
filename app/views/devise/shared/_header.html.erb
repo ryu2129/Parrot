@@ -45,12 +45,12 @@
             <%= link_to '　Log out', destroy_member_session_path, method: :delete, class: 'nav-link fas fa-sign-out-alt fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
           </li>
           <li class="nav-item ">
+            <%= link_to ' Notifications', notifications_path, class: 'nav-link far fa-bell fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
+          </li>
+          <li class="nav-item ">
             <%= link_to member_path(current_member.id) do %>
               <%= image_tag current_member.image.url, class:"nav-link member-icon faa-float animated-hover mt-2 mr-3" %>
             <% end %>
-          </li>
-          <li class="nav-item ">
-            <%= link_to '通知', notifications_path %>
           </li>
         <% else %>
           <li class="nav-item active">
