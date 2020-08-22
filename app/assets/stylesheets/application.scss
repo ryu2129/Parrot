@@ -27,6 +27,14 @@ body {
   font-family: '03UI';
 }
 
+
+@font-face {
+  font-family: '03UI';
+  src:  asset_url('/assets/03UI.otf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 header {
   font-family: '03UI';
 }
