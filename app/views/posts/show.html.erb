@@ -1,3 +1,4 @@
+<%= render '/devise/shared/flash_messages' %>
 <div class="container">
   <div class="row mb-4">
     <h1><strong>Post show</strong></h1>
@@ -54,7 +55,11 @@
 
           <p class="card-text mb-2">
             <div class="h5"><u>料金</u></div>
-            <%= @post.admission %>
+            <% if @post.admission =~ /\A[1-9][0-9]*\z/ %>
+              <%= @post.admission.to_i.to_s(:delimited) %>円
+            <% else  %>
+              <%= @post.admission %>
+            <% end %>
           <p class="mb-4"></p>
 
           <% if member_signed_in? %>

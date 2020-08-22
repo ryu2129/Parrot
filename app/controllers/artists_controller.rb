@@ -6,15 +6,11 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @posts = @artist.posts.where("schedule > ?", DateTime.now)
+    @posts = @artist.posts.where("schedule > ?", DateTime.now).order("schedule ASC")
   end
 
   def search
     @artists = Artist.search(params[:keyword])
-    #respond_to do |format|
-      #format.html
-      #format.json
-    #end
   end
 
 

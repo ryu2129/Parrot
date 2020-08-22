@@ -3,7 +3,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @posts = @member.posts.where("schedule > ?", DateTime.now)
+    @posts = @member.posts.order("schedule ASC")
   end
 
   def edit
