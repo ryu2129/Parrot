@@ -110,13 +110,17 @@
       <% end %>
     </div>
   </div>
+
 <!-- 未ログイン時-->
 <% else %>
   <div class="container">
+<<<<<<< HEAD
     <div class="row mb-4">
       <h1><strong>Time line</strong></h1>
     </div>
   </div>
+=======
+>>>>>>> origin/develop
   <div class="container">
     <div class="row">
       <div class="main text-center col-12">
@@ -127,6 +131,10 @@
         </h4>
         <%= link_to "Let's Post！", new_member_session_path, class:"btn btn-warning btn-lg home-btn mt-4 mb-4" %>
       </div>
+    </div>
+  </div>
+    <div class="row mb-4">
+      <h1><strong>Time line</strong></h1>
     </div>
   </div>
   </div>
@@ -185,7 +193,11 @@
 
             <p class="card-text mb-2">
               <div class="h5"><u>料金</u></div>
+              <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
+                <%= post.admission.to_i.to_s(:delimited) %>円
+              <% else  %>
                 <%= post.admission %>
+              <% end %>
             </p>
             <p></p>
 

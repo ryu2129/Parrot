@@ -80,8 +80,16 @@
                 </p>
 
                 <p class="card-text mb-2">
+<<<<<<< HEAD
                   <div class="h5"><u>ADMISSION</u></div>
+=======
+                  <div class="h5"><u>料金</u></div>
+                  <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
+                    <%= post.admission.to_i.to_s(:delimited) %>円
+                  <% else  %>
+>>>>>>> origin/develop
                     <%= post.admission %>
+                  <% end %>
                 </p>
                 <p></p>
 
@@ -151,8 +159,16 @@
                 </p>
 
                 <p class="card-text mb-2">
+<<<<<<< HEAD
                   <div class="h5"><u>ADMISSION</u></div>
+=======
+                  <div class="h5"><u>料金</u></div>
+                  <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
+                    <%= post.admission.to_i.to_s(:delimited) %>円
+                  <% else  %>
+>>>>>>> origin/develop
                     <%= post.admission %>
+                  <% end %>
                 </p>
                 <p></p>
 

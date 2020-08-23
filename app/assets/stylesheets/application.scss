@@ -15,16 +15,32 @@
 
   @import "bootstrap";
 
+<<<<<<< HEAD
 body  {
+=======
+@font-face {
+  font-family: '03UI';
+  src:  asset_url('/assets/03UI.otf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+>>>>>>> origin/develop
   background-color: #DFEFED;
   font-family: '03UI';
 }
+
 
 @font-face {
   font-family: '03UI';
   src:  asset_url('/assets/03UI.otf') format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+header {
+  font-family: '03UI';
 }
 
 .field_with_errors {
@@ -150,7 +166,7 @@ button:focus {
 }
 @media screen and (max-width: 640px) {/* 640px以下*/
     html{
-        font-size: 65%;
+        font-size: 85%;
     }
     body{
     line-height: 2;
@@ -205,9 +221,6 @@ mark {
 }
 .calendar-title {
   font-size: 25px;
-}
-a {
-  color: black;
 }
 
 .simple-calendar {
