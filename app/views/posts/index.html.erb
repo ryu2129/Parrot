@@ -20,6 +20,7 @@
         <% end %>
       </div>
     </div>
+
     <div class="row mt-4">
       <% @posts.each do |post| %>
       <div class="card-deck col-12 col-lg-6 mb-4 mx-auto">
@@ -27,8 +28,9 @@
           <img class="card-img-top">
             <%= image_tag post.image.url %>
           <div class="card-body">
+            <%= link_to post_path(post) do %>
             <h5 class="text-muted month">
-              <%= post.schedule.mon %>月
+              <%= post.schedule.mon %>/
             </h5>
             <h1 class="card-title day">
               <mark><%= post.schedule.day %></mark>
@@ -39,18 +41,20 @@
                 [<%= post.artist.name %>]<br>
               <% end %>
             </h4>
+            <%= link_to post_path(post) do %>
             <h4 class="card-subtitle  text-center mb-4">
               <%= post.title %>
             </h4>
+            <% end %>
 
             <p class="card-text">
-              <div class="h5"><u>日程</u></div>
-              <%= post.schedule.year %>年<%= post.schedule.mon %>月<%= post.schedule.day %>日　<%= post.schedule.hour %>:<%= post.schedule.min %>〜
+              <div class="h5"><u>DAY</u></div>
+              <%= post.schedule.year %>/<%= post.schedule.mon %>/<%= post.schedule.day %>　<%= post.schedule.hour %>:<%= post.schedule.min %>〜
             </p>
             <p></p>
 
             <p class="card-text mb-2">
-              <div class="h5"><u>視聴方法</u></div>
+              <div class="h5"><u>VIEWING</u></div>
                 <% if post.watching_method == 0 %>
                   ストリーミング
                 <% elsif post.watching_method == 1 %>
@@ -60,7 +64,7 @@
             </p>
 
             <p class="card-text mb-2">
-              <div class="h5"><u>料金</u></div>
+              <div class="h5"><u>ADMISSION</u></div>
               <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
                 <%= post.admission.to_i.to_s(:delimited) %>円
               <% else  %>
@@ -71,7 +75,7 @@
 
             <%= link_to post_path(post) do %>
               <p class="btn btn-primary mt-2">
-                詳細はこちら
+                More...
               </p>
             <% end %>
 
@@ -99,6 +103,7 @@
             <% end %>
             </div>
 
+            <% end %>
           </div>
         </div>
       </div>
@@ -109,6 +114,13 @@
 <!-- 未ログイン時-->
 <% else %>
   <div class="container">
+<<<<<<< HEAD
+    <div class="row mb-4">
+      <h1><strong>Time line</strong></h1>
+    </div>
+  </div>
+=======
+>>>>>>> origin/develop
   <div class="container">
     <div class="row">
       <div class="main text-center col-12">
@@ -134,7 +146,7 @@
           <%= date.day %>
           <% posts.each do |post| %>
             <div class="text-center ">
-              <u><%= link_to post.artist.name, post %></u>
+              <%= link_to post.artist.name, post %>
             </div>
           <% end %>
         <% end %>

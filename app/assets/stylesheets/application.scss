@@ -15,6 +15,9 @@
 
   @import "bootstrap";
 
+<<<<<<< HEAD
+body  {
+=======
 @font-face {
   font-family: '03UI';
   src:  asset_url('/assets/03UI.otf') format("truetype");
@@ -23,6 +26,7 @@
 }
 
 body {
+>>>>>>> origin/develop
   background-color: #DFEFED;
   font-family: '03UI';
 }
