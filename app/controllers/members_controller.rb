@@ -3,11 +3,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-<<<<<<< HEAD
     @posts = @member.posts
-=======
-    @posts = @member.posts.order("schedule ASC")
->>>>>>> origin/develop
   end
 
   def edit

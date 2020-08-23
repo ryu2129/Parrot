@@ -1,5 +1,4 @@
 <body>
-<<<<<<< HEAD
   <header>
     <nav class="navbar navbar-expand-lg mb-5 navbar-dark", style="background-color: #6AC1B7;">
       <%= link_to 'Parrot', root_path, class:'navbar-brand', style:'font-size:40px; color: #517D99;'%>
@@ -7,15 +6,6 @@
       <div class="about mt-4 mr-auto" data-toggle="modal" data-target="#exampleModal">
         ?
       </div>
-=======
-<header>
-  <nav class="navbar navbar-expand-lg mb-5 navbar-dark", style="background-color: #6AC1B7;">
-    <%= link_to 'Parrot', root_path, class:'navbar-brand', style:'font-size:40px; color: #517D99;'%>
-    <!-- about -->
-    <div class="about mt-4 mr-auto" data-toggle="modal" data-target="#exampleModal">
-      ?
-    </div>
->>>>>>> origin/develop
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,46 +30,6 @@
         </div>
       </div>
 
-<<<<<<< HEAD
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="#Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="Navbar">
-        <ul class="navbar-nav">
-          <% if member_signed_in? %>
-            <li class="nav-item active ">
-              <%= link_to '　Post', new_post_path, class: 'nav-link fas fa-edit fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-            <li class="nav-item ">
-              <%= link_to '　Artist', artists_path, class: 'nav-link fas fa-user-friends fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-            <li class="nav-item ">
-              <%= link_to '　Log out', destroy_member_session_path, method: :delete, class: 'nav-link fas fa-sign-out-alt fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-            <li class="nav-item ">
-              <%= link_to member_path(current_member.id) do %>
-                <%= image_tag current_member.image.url, class:"nav-link member-icon faa-float animated-hover mt-2 mr-3" %>
-              <% end %>
-            </li>
-          <% else %>
-            <li class="nav-item active">
-              <%= link_to '　Post', new_post_path, class: 'nav-link fas fa-edit fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '　Artist', artists_path, class: 'nav-link fas fa-user-friends fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '　Sign up', new_member_registration_path, class: 'nav-link fas fa-user-plus fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '　Log in', new_member_session_path, class: 'nav-link fas fa-sign-in-alt fa-1x h-icon faa-float animated-hover mt-3 mr-5' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-  </header>
-=======
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="#Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -121,5 +71,4 @@
     </div>
   </nav>
 </header>
->>>>>>> origin/develop
 </body>

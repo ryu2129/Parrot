@@ -54,17 +54,8 @@
           </p>
 
           <p class="card-text mb-2">
-<<<<<<< HEAD
             <div class="h5"><u>ADMISSION</u></div>
             <%= @post.admission %>
-=======
-            <div class="h5"><u>料金</u></div>
-            <% if @post.admission =~ /\A[1-9][0-9]*\z/ %>
-              <%= @post.admission.to_i.to_s(:delimited) %>円
-            <% else  %>
-              <%= @post.admission %>
-            <% end %>
->>>>>>> origin/develop
           <p class="mb-4"></p>
 
           <% if member_signed_in? %>
@@ -84,8 +75,8 @@
           <% end %>
 
           <% if @post.member == current_member %>
-            <%= link_to "編集", edit_post_path(@post), class: 'btn btn-info btn-block mb-4' %>
-            <%= link_to "削除", post_path(@post), method: :delete,  data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger btn-block' %>
+            <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-info btn-block mb-4' %>
+            <%= link_to "Delete", post_path(@post), method: :delete,  data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger btn-block' %>
           <% end %>
 
         </div>

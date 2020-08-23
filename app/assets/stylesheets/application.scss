@@ -15,18 +15,8 @@
 
   @import "bootstrap";
 
-<<<<<<< HEAD
-body  {
-=======
-@font-face {
-  font-family: '03UI';
-  src:  asset_url('/assets/03UI.otf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 
 body {
->>>>>>> origin/develop
   background-color: #DFEFED;
   font-family: '03UI';
 }
@@ -221,6 +211,10 @@ mark {
 }
 .calendar-title {
   font-size: 25px;
+}
+
+a {
+  color: black;
 }
 
 .simple-calendar {
