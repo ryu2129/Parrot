@@ -37,7 +37,7 @@
             <%= image_tag post.image.url %>
           <div class="card-body">
             <h5 class="text-muted">
-              <%= post.schedule.mon %>月
+              <%= post.schedule.mon %>/
             </h5>
             <h1 class="card-title">
               <mark><%= post.schedule.day %></mark>
@@ -45,7 +45,7 @@
 
           <h4 class="card-subtitle mt-1 text-center mb-2">
             <%= link_to artist_path(post.artist) do %>
-              <u class="text-dark">[<%= post.artist.name %>]</u><br>
+              [<%= post.artist.name %>]<br>
             <% end %>
           </h4>
           <h4 class="card-subtitle  text-center mb-4">
@@ -53,13 +53,13 @@
           </h4>
 
           <p class="card-text">
-            <div class="h5"><u>日程</u></div>
+            <div class="h5"><u>DAY</u></div>
             <%= post.schedule.year %>年<%= post.schedule.mon %>月<%= post.schedule.day %>日　<%= post.schedule.hour %>:<%= post.schedule.min %>〜
           </p>
           <p></p>
 
           <p class="card-text mb-2">
-            <div class="h5"><u>視聴方法</u></div>
+            <div class="h5"><u>VIEWING</u></div>
               <% if post.watching_method == 0 %>
                 ストリーミング
               <% elsif post.watching_method == 1 %>
@@ -69,7 +69,7 @@
           </p>
 
           <p class="card-text mb-2">
-            <div class="h5"><u>料金</u></div>
+            <div class="h5"><u>ADMISSION</u></div>
             <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
               <%= post.admission.to_i.to_s(:delimited) %>円
             <% else  %>
@@ -80,7 +80,7 @@
 
           <%= link_to post_path(post) do %>
             <p class="btn btn-primary mt-2">
-              詳細はこちら
+              More...
             </p>
           <% end %>
 

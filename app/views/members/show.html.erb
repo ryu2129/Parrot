@@ -23,8 +23,6 @@
       </div>
     </div>
   </div>
-
-
   <%# タブ %>
   <div class="row">
     <ul class="nav nav-tabs col-12 col-lg-12">
@@ -36,7 +34,6 @@
       </li>
     </ul>
   </div>
-
     <%# タブの中身（1）  %>
   <div class="row">
     <div class="tab-content mt-4 col-lg-6 mx-auto">
@@ -80,16 +77,8 @@
                 </p>
 
                 <p class="card-text mb-2">
-<<<<<<< HEAD
                   <div class="h5"><u>ADMISSION</u></div>
-=======
-                  <div class="h5"><u>料金</u></div>
-                  <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
-                    <%= post.admission.to_i.to_s(:delimited) %>円
-                  <% else  %>
->>>>>>> origin/develop
                     <%= post.admission %>
-                  <% end %>
                 </p>
                 <p></p>
 
@@ -117,7 +106,6 @@
           </div>
         <% end %>
       </div>
-
       <%# タブの中身（2）  %>
       <div id="memberfav" class="tab-pane">
         <% @member.favorite_posts.each do |post| %>
@@ -159,16 +147,8 @@
                 </p>
 
                 <p class="card-text mb-2">
-<<<<<<< HEAD
                   <div class="h5"><u>ADMISSION</u></div>
-=======
-                  <div class="h5"><u>料金</u></div>
-                  <% if post.admission =~ /\A[1-9][0-9]*\z/ %>
-                    <%= post.admission.to_i.to_s(:delimited) %>円
-                  <% else  %>
->>>>>>> origin/develop
                     <%= post.admission %>
-                  <% end %>
                 </p>
                 <p></p>
 
@@ -191,7 +171,6 @@
                     </div>
                   <% end %>
                 <% end %>
-
                 <div class="text-right" >
                   <%= link_to member_path(post.member_id) do %>
                     <%= image_tag post.member.image.url, class:"member-icon" %>
@@ -200,7 +179,6 @@
                     </span>
                   <% end %>
                 </div>
-
               </div>
             </div>
           </div>
